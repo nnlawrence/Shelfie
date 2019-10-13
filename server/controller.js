@@ -22,8 +22,10 @@ module.exports = {
         db.update_comment([id, name, price, image])
         .then(dbInstance => res.status(200).send(dbInstance))
     },
-    // deleteProduct: (req, res) => {
-    //     const db = req.app.get('db')
-
-    // }
+    deleteProduct: (req, res) => {
+        const db = req.app.get('db')
+        const { id } = req.params
+        db.delete_product(id)
+        .then(dbInstance => res.status(200).send(dbInstance))
+    }
 }

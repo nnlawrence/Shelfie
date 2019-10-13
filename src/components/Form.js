@@ -48,22 +48,21 @@ class Form extends Component {
         }
         axios.post('/api/product', newInv)
         .then(res => {
-            this.props.get(res.data)
+            this.props.getInventory(res.data)
         })
     }
 
     render() {
-        console.log(this.props)
         return (
             <>
             <div className='form-container'>
              <div className='input-container'>
                 <label>Image URL:</label>
-                <input placeholder='image' onChange={(e) => this.handleImg(e.target.value)} value={this.state.img} ></input>
+                <input type="url" placeholder='image' onChange={(e) => this.handleImg(e.target.value)} value={this.state.img} />
                 <label>Product Name:</label>
-                <input placeholder='name' onChange={(e) => this.handleName(e.target.value)} value={this.state.name} ></input>
+                <input type="text" placeholder='name' onChange={(e) => this.handleName(e.target.value)} value={this.state.name} />
                 <label>Price:</label>
-                <input placeholder='price'></input>
+                <input type="text" placeholder='price' onChange={(e) => this.handlePrice(e.target.value)} value={this.state.price}/>
              </div>  
                 <button onClick={() => this.handleCancel()}>Cancel</button>
                 <button onClick={() => this.handleAddInv()} >Add To Inventory</button>
