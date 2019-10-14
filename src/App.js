@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
+import 'reset-css'
 import './App.css';
-import Header from './components/Header';
-import Dashboard from './components/Dashboard';
-import Form from './components/Form';
+import Header from './components/Header/Header';
+import Dashboard from './components/Dashboard/Dashboard';
+import Form from './components/Form/Form';
 import axios from 'axios';
+import routes from './routes';
 
 class App extends Component {
   constructor(){
@@ -30,13 +32,14 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className='App'>
         <Header />
         <Dashboard 
          inventory={ this.state.inventory } 
          getInventory={ this.getInventory } />
         <Form 
          getInventory={ this.getInventory } />
+         {/* { routes } */}
       </div>
     )
   }

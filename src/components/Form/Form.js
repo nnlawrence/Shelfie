@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 class Form extends Component {
     constructor(){
@@ -9,6 +10,7 @@ class Form extends Component {
             img: '',
             name: '',
             price: 0,
+            inventory: [],
             edit: false
         }
     }
@@ -52,6 +54,23 @@ class Form extends Component {
         })
     }
 
+    handleUpdate = (id) => {
+        const { name,price, img } = this.state
+        const body = {
+            name: this.state.name,
+            price: this.price.name,
+            img: this.state.img
+        }
+        axios.put(`/api/product/${id}`, body)
+        .then(res => {
+            this.setState({
+                inventory: res.data,
+                edit: false
+            })
+        })
+
+    }
+
     render() {
         return (
             <>
@@ -62,10 +81,10 @@ class Form extends Component {
                 <label>Product Name:</label>
                 <input type="text" placeholder='name' onChange={(e) => this.handleName(e.target.value)} value={this.state.name} />
                 <label>Price:</label>
-                <input type="text" placeholder='price' onChange={(e) => this.handlePrice(e.target.value)} value={this.state.price}/>
+                <input type="text" placeholder='price' onChange={(e) => this.handlePrice(e.target.value)} value={this.state.price} />
              </div>  
-                <button onClick={() => this.handleCancel()}>Cancel</button>
-                <button onClick={() => this.handleAddInv()} >Add To Inventory</button>
+                <Link exact to='/'><button onClick={() => this.handleCancel()}>Cancel</button></Link>
+                <button onClick={() => this.handleAddInv()}>Add To Inventory</button>
             </div>    
             </>
         )

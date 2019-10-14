@@ -19,6 +19,6 @@ app.get('/api/inventory', ctrl.getProducts)
 app.post('/api/product', ctrl.addProduct)
 
 app.delete('/api/inventory/:id', ctrl.deleteProduct)
-// app.put('/api/product/:id, ctrl.updateProduct)
+app.put('/api/product/:id', ctrl.updateProduct)
 
 app.listen(SERVER_PORT, console.log(`server running ${SERVER_PORT}`))
