@@ -20,9 +20,9 @@ class Dashboard extends Component {
         })
     }
 
-    handleEdit = (id) => {
+    updateProduct = (data) => {
         this.setState({
-            edit: id
+            inventory: data
         })
     }
     
@@ -34,6 +34,7 @@ class Dashboard extends Component {
                     inv={ inventory } 
                     delete={ this.handleDelete }
                     handleEdit={this.handleEdit}
+                    updateProduct={this.updateProduct}
                     />
         });
 
